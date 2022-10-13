@@ -1,9 +1,10 @@
 import { Router } from "express";
+import { MyReq } from "./server";
 
 const router = Router();
 
-router.get("/product", (req, res) => {
-  res.json({ product: "hello" });
+router.get("/product", (req: MyReq, res) => {
+  res.json({ product: "Message" });
 });
 router.get("/product/:id", (req, res) => {});
 router.put("/product/:id", (req, res) => {});
