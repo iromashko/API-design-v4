@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors from "cors";
 import { protect } from "./modules/auth";
 import { JwtPayload } from "jsonwebtoken";
+import { createNewUser, signIn } from "./handlers/user";
 
 export type MyReq = Request & { secret: string; user: JwtPayload | string };
 
@@ -22,5 +23,8 @@ app.get("/", (req: MyReq, res) => {
 });
 
 app.use("/api", protect, router);
+
+app.post("/user", createNewUser);
+app.post("/signin", signIn);
 
 export default app;
